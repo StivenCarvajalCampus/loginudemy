@@ -1,9 +1,12 @@
 const express = require('express');
 const { use } = require('passport');
 const path = require("path");
-const session = require('express-session')
+const session = require('express-session');
+
+require('./strategies/discordStrategy')
 const app = express();
 const dotenv = require('dotenv');
+
 //Configuraciones
 dotenv.config();
 let appExpress = express();
