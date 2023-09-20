@@ -4,10 +4,10 @@ db.createCollection('users',
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            required: ["discordId","username", "guilds", "timestamps"],
+            required: ["discordId","username", "guilds"],
             properties: {
                 discordId:{
-                    bsonType: "int", 
+                    bsonType: "string", 
                     description:"El campo discordId debe ser numerico",
                     
 
@@ -21,11 +21,6 @@ db.createCollection('users',
                     bsonType: "array",
                     description:"El campo guilds debe ser array",
                             
-                },
-                timestamps:{
-                    bsonType: "array",
-                    description:"El campo timestamps debe ser array",
-                          
                 }
 
         }
