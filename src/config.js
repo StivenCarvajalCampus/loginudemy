@@ -2,8 +2,12 @@ const dotenv = require('dotenv');
 const { MongoClient } = require('mongodb');
 
 dotenv.config();
-
-module.exports = async function conex() {
+const { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } = process.env;
+module.exports = {
+  
+DISCORD_CLIENT_ID,
+DISCORD_CLIENT_SECRET,
+async conex() {
   try {
     const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.bzjkog5.mongodb.net/${process.env.ATLAS_DB}`;
     const options = {
@@ -15,4 +19,6 @@ module.exports = async function conex() {
   } catch (error) {
     return { status: 500, message: error.message };
   }
+
+}
 };
