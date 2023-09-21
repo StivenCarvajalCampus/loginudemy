@@ -6,7 +6,7 @@ router.get('/login', passport.authenticate('discord'));
 router.get(
     "/redirect",
     passport.authenticate("discord",{
-        successRedirect:"/dashboard",
+        successRedirect:'/dashboard',
         failureRedirect:"/",
     })
 )

@@ -4,13 +4,13 @@ const { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } = require('../config');
 const getUserCollection = require('../models/User');
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.discordId);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const userCollection = await getUserCollection();
-    const user = await userCollection.findOne({ _id: id });
+    const user = await userCollection.findOne({ discordId : id });
     done(null, user);
   } catch (error) {
     done(error, null);
@@ -28,7 +28,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
         const userCollection = await getUserCollection();
-        const user = await userCollection.findOne({ discordId: profile.id });
+        const existingUser = await userCollection.findOne({ discordId: profile.id });
 
         if (existingUser) {
           done(null, existingUser);
@@ -38,7 +38,9 @@ passport.use(
             username: profile.username,
             guilds: profile.guilds,
           };
+          
           await userCollection.insertOne(newUser);
+          console.log(newUser);          
           done(null, newUser);
         }
       } catch (error) {
