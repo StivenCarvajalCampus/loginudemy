@@ -26,12 +26,20 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 
+
 //Routes
 app.use('/', require('./routes/index.routes'));
 
 app.use('/auth', require('./routes/auth.routes'));
 
-app.use('/dashboard', require('./routes/dashboard.routes'));
+app.use('/', require('./routes/dashboard.routes'));
+
+
+
+//const navigate=useNavigate()
+
+
+//navigate("/dashboard")
 
 
 // let config = JSON.parse(process.env.MY_SERVER)

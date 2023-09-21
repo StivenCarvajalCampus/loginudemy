@@ -38,9 +38,9 @@ passport.use(
             username: profile.username,
             guilds: profile.guilds,
           };
-          
+
           await userCollection.insertOne(newUser);
-          console.log(newUser);          
+          console.log('New user created:', newUser); 
           done(null, newUser);
         }
       } catch (error) {
