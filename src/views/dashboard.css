@@ -1,0 +1,9 @@
+.image {
+  background-image: url(../assets/images/fondo-general.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

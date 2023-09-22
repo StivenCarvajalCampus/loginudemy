@@ -32,6 +32,8 @@ passport.use(
 
         if (existingUser) {
           done(null, existingUser);
+
+          
         } else {
           const newUser = {
             discordId: profile.id,

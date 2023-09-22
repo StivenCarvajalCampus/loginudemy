@@ -3,7 +3,6 @@ const { use } = require('passport');
 const path = require("path");
 const session = require('express-session');
 const passport = require('passport');
-const ejs = require('ejs');
 
 
 const app = express();
@@ -12,9 +11,12 @@ require('./strategies/discordStrategy')
 //Configuraciones
 let appExpress = express();
 appExpress.use(express.json());
-app.set('view engine','ejs')
-app.set('views',path.join(__dirname,"views"))
-app.engine('ejs', ejs.renderFile); 
+app.set('views', path.join(__dirname, 'src', 'views'));
+
+app.set('view engine', 'jsx'); // Usar el motor de vistas "jsx"
+
+// Middleware para compilar JSX
+app.engine('jsx', require('express-react-views').createEngine());
 
 //Middlewares
 app.use(session({
